@@ -1,20 +1,17 @@
-/*Necessary library inclusion
-graphics library for graphical representation
-*/
+/*Necessary library inclusion graphics library for graphical representation*/
 #include <iostream> 
 #include <graphics.h>
 #include <string> 
 using namespace std; 
 #define N 8
-/*Global declaration of box and sol2 
-box contains internal mid point (x,y) of grahical screen which is made of 64 tiles
-each tiles cooresponds to a matrix row and coloumn whose mid points are stored inside box;
-
+/* Global declaration of box and sol2 
+box contains the internal mid-point (x,y) of the grahical screen which is made up of 64 tiles
+each tile corresponds to a matrix row and column whose mid-points are stored inside the box
 sol2 contains the path tracing of cockroach within the matrix i.e. tiles 
 */
 int box[8][8][2];
 int sol2[8][8];
-/*Standard Node defination*/
+/*Standard Node definition*/
 class node
 {
 	public:
@@ -33,12 +30,12 @@ class node
 class link
 {
 	public:
-		node* head=NULL;	
+	node* head=NULL;	
 	/*Empty construtor*/
 	link()
 	{}
-	/*Parameterized construtor
-	Takes coorinates and step Number as parameter and creates head node*/
+	/*Parameterized constructor
+	Takes coordinates and step Number as parameters and creates head node*/
 	link(int x, int y, int num)
 	{
 		node *n=new node(x,y,num);
@@ -49,12 +46,12 @@ class link
 	{
 		node *n= new node(x,y,num);
 		node *temp=head;
-		/*If head is Null then its saves node as head*/
+		/*If the head is Null then it saves node as head*/
 		if(head==NULL)
 		{
 			head=n;
 			return;
-		}/*Loop runs until it finds its end and stores the node at end*/
+		}/*Loop runs until it finds its end and stores the node at the end*/
 		while(temp->next!=NULL)
 		{
 			temp=temp->next;
@@ -76,7 +73,7 @@ class link
 		/*
 		Sorts the linked list based on steps and swaps data to sort it Uses Simple sort
 		It sorts based on Step count
-		Starts from 1st element compares it with next element if greater then swaps both elements until the end
+		Starts from 1st element and compares it with the next element if greater then swaps both elements until the end
 		*/
 		void sort()
 		{	
@@ -112,8 +109,8 @@ class link
 		void color()
 	{
 		node* temp=head;
-		int x,y;/*stores matrix row and coloums i.e coordinates*/
-		int a,b;/*used to align the Number that are showed within each tiles in the centre*/
+		int x,y;/*stores matrix row and columns i.e coordinates*/
+		int a,b;/*used to align the numbers that are shown within each tile at the center*/
 		delay(1000);
 		while(temp!=NULL)
 		{
@@ -265,5 +262,3 @@ int main()
   	closegraph();
   	return 0; 
 } 
-
-
